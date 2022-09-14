@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
+import HomeScreen from '../Screens/HomeScreen';
+import LoginScreen from '../Screens/Authentication/LoginScreen';
+import RegisterScreen from '../Screens/Authentication/RegisterScreen';
 import { AuthContext } from '../Context/AuthContext';
-import SplashScreen from '../screens/SplashScreen';
+import SplashScreen from '../Screens/Authentication/SplashScreen';
+import ForgetPassword from '../Screens/Authentication/ForgetPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,11 +17,7 @@ const Navigation = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 {userInfo.token ? (
-
                     <Stack.Screen name="Home" component={HomeScreen} />
-
-
-
                 ) : splashLoading ? (
                     <Stack.Screen
                         name="Splash Screen"
@@ -28,7 +25,6 @@ const Navigation = () => {
                         options={{ headerShown: false }}
                     />
                 ) : (
-
                     <>
                         <Stack.Screen
                             name="Login"
@@ -38,6 +34,11 @@ const Navigation = () => {
                         <Stack.Screen
                             name="Register"
                             component={RegisterScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name='ForgetPassword'
+                            component={ForgetPassword}
                             options={{ headerShown: false }}
                         />
                     </>

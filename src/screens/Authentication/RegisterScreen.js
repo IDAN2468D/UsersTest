@@ -1,26 +1,34 @@
-import React, { useState, useContext } from 'react';
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native'
-import { AuthContext } from '../Context/AuthContext';
+import React, { useState, useContext } from 'react'
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { AuthContext } from '../../Context/AuthContext';
 
-const LoginScreen = ({ navigation }) => {
+const RegisterScreen = ({ navigation }) => {
 
+    const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-    const { login, isLoading } = useContext(AuthContext);
+
+    const { isLoading, register } = useContext(AuthContext);
+
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: isLoading ? "rgba(0,0,0,0.2)" : "white", }]}>
             <View style={styles.ActivityIndicator}>
                 <ActivityIndicator animating={isLoading} size="large" />
             </View>
-            <View style={styles.wrapper}>
+            <View style={styles.wrapper} size={30}>
+                <TextInput
+                    style={styles.input}
+                    value={name}
+                    placeholder="Enter name"
+                    onChangeText={text => setName(text)}
+                />
                 <TextInput
                     style={styles.input}
                     value={email}
                     placeholder='Enter email'
                     onChangeText={(text) => setEmail(text)}
                 />
-
                 <TextInput
                     style={styles.input}
                     value={password}
@@ -29,11 +37,15 @@ const LoginScreen = ({ navigation }) => {
                     onChangeText={(text) => setPassword(text)}
                 />
 
-                <Button title='Login' onPress={() => login(email, password)} />
+                <Button title='Register'
+                    onPress={() => {
+                        register(name, email, password);
+                    }}
+                />
 
                 <View style={styles.TextInput}>
-                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                        <Text style={styles.link}>Register</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                        <Text style={styles.link}>Login</Text>
                     </TouchableOpacity>
                     <Text>Don't have an account? </Text>
                 </View>
@@ -42,7 +54,7 @@ const LoginScreen = ({ navigation }) => {
     )
 }
 
-export default LoginScreen
+export default RegisterScreen
 
 const styles = StyleSheet.create({
     container: {
