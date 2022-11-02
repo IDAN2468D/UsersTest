@@ -1,3 +1,19 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "cSpell.words": [
+        "apikey",
+        "cardtitle",
+        "Categoris",
+        "Curent",
+        "Detaile",
+        "directims",
+        "Drog",
+        "droggoble",
+        "filetext",
+        "getch",
+        "Kazam",
+        "rankby",
+        "Selectd",
+        "wechat"
+    ]
 }

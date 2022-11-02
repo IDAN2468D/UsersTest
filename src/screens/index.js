@@ -1,10 +1,16 @@
-import HomeScreen from '../Screens/HomeScreen';
-import AboutScreen from '../Screens/AboutScreen';
-import Notifications from '../Screens/Notifications';
+import HomeScreen from './HomeScreen';
+import OrderScreen from './OrderScreen';
+import BagScreen from './BagScreen';
+import ChatScreen from './ChatScreen';
+import ProfileScreen from './ProfileScreen'
+import DetailsScreen from './DetailsScreen';
 
 
 export {
     HomeScreen,
-    AboutScreen,
-    Notifications
+    OrderScreen,
+    BagScreen,
+    ChatScreen,
+    ProfileScreen,
+    DetailsScreen
 }
