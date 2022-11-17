@@ -4,7 +4,7 @@ import React from 'react'
 const ChatScreen = () => {
     return (
         <View>
-            <Text>kazam</Text>
+            <Text>ChatScreen</Text>
         </View>
     )
 }
