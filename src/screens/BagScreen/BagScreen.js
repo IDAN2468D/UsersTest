@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ActivityIndicator, LogBox, Text, Dimensions, View } from 'react-native';
+import { StyleSheet, ActivityIndicator, LogBox, Text, Dimensions, View, Modal, Button, Pressable } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout, Circle } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { GOOGLE_API_KEY } from '../../environments';
-import MyCustomMarkerView from '../Components/MyCustomMarkerView';
-import { locations } from '../Data/Data';
-import CustomMarker from '../Components/CustomMarker';
+import { GOOGLE_API_KEY } from '../../../environments';
+import MyCustomMarkerView from '../../Components/MyCustomMarkerView';
+import { locations } from '../../Data/Data';
+import CustomMarker from '../../Components/CustomMarker';
 
 
 LogBox.ignoreLogs(['new NativeEventEmitter']);

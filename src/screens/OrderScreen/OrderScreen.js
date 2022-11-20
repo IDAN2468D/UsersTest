@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import MapView, { PROVIDER_GOOGLE, Polyline, Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, Platform, TouchableOpacity, Animated, Image } from 'react-native';
-import { GOOGLE_API_KEY } from '../../environments';
-import CustomMarker from '../Components/CustomMarker';
-import { locations } from '../Data/Data';
+import { StyleSheet, Text, View, Dimensions, Platform, Pressable, Animated, Image, Modal } from 'react-native';
+import { GOOGLE_API_KEY } from '../../../environments';
+import CustomMarker from '../../Components/CustomMarker';
+import { locations } from '../../Data/Data';
 
 
 export default function App() {
+
 
     const [origen, setOrigen] = useState({
         latitude: 33.640411,
@@ -44,11 +45,11 @@ export default function App() {
                         coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
                         title={marker.title}
                     >
-                        <CustomMarker item={marker} />
+                        <CustomMarker item={marker} color={marker.color} />
                     </Marker>
                 ))}
             </MapView>
-        </View>
+        </View >
     );
 }
 
@@ -63,4 +64,45 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    buttonOpen: {
+        backgroundColor: "#F194FF",
+    },
+    buttonClose: {
+        backgroundColor: "#2196F3",
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+    }
 });

@@ -1,27 +1,15 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { colors } from '../StyleGuide'
 
-const CustomMarker = ({ item }) => {
+
+const CustomMarker = ({ color }) => {
     return (
-        <View style={styles.roundMarker}>
-            <Image style={styles.roundImage} source={{ uri: item.markerImage }} />
+        <View>
+            <MaterialCommunityIcons name="battery-charging-70" size={30} color={color ? colors.GuidePink : colors.Blue} />
         </View>
     )
 }
 
 export default CustomMarker
-
-const styles = StyleSheet.create({
-    roundMarker: {
-        height: 50,
-        width: 50,
-        backgroundColor: 'white',
-        borderRadius: 25,
-
-    },
-    roundImage: {
-        height: 50,
-        width: 50,
-        borderRadius: 25
-    }
-})

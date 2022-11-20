@@ -1,7 +1,7 @@
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import SaleYellowScreen from '../screens/SaleYellowScreen';
-import MyCouponsScreen from '../screens/MyCouponsScreen';
+import SaleYellowScreen from '../screens/SaleYellowScreen/SaleYellowScreen';
+import MyCouponsScreen from '../screens/MyCouponsScreen/MyCouponsScreen';
 
 const Tab = createMaterialTopTabNavigator();
 

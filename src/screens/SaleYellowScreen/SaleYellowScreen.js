@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
-import Categoris from '../Components/Categoris';
+import Categoris from '../../Components/Categoris';
 import { useNavigation } from '@react-navigation/native'
 
 

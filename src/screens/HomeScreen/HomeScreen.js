@@ -1,5 +1,5 @@
 import React from 'react';
-import TopTabNavigator from '../Navigation/TopTabNavigator';
+import TopTabNavigator from '../../Navigation/TopTabNavigator';
 
 const HomeScreen = () => {
 

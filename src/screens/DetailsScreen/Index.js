@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, FlatList } from 'react-native';
-import CategoryText from '../Components/CategoryText';
-import { colors, fonts, sizes } from '../StyleGuide';
+import CategoryText from '../../Components/CategoryText';
+import { colors, fonts, sizes } from '../../StyleGuide';
 
 const widthScreen = Dimensions.get('window').width;
 

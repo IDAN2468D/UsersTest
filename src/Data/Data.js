@@ -4,56 +4,64 @@ export const locations =
         title: 'Location 1', latitude: 24.86170245,
         longitude: 67.00310938,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 13
+        weight: 13,
+        color: true
     },
     {
         id: 2,
         title: 'Location 2', latitude: 24.83170980,
         longitude: 67.00210948,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 19
+        weight: 19,
+        color: false
     },
     {
         id: 3,
         title: 'Location 3', latitude: 24.83073537,
         longitude: 67.02129903,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 18
+        weight: 18,
+        color: true
     },
     {
         id: 4,
         title: 'Location 4', latitude: 24.83073230,
         longitude: 67.10113298,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 12
+        weight: 12,
+        color: false,
     },
     {
         id: 5,
         title: 'Location 5', latitude: 24.83079990,
         longitude: 67.02939980,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 2
+        weight: 2,
+        color: true,
     },
     {
         id: 6,
         title: 'Location 6', latitude: 24.85072329,
         longitude: 67.02129803,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 15
+        weight: 15,
+        color: false,
     },
     {
         id: 7,
         title: 'Location 7', latitude: 24.84089002,
         longitude: 67.02122203,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 5
+        weight: 5,
+        color: true,
     },
     {
         id: 8,
         title: 'Location 8', latitude: 24.84064338,
         longitude: 67.03120900,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
-        weight: 50
+        weight: 50,
+        color: false,
     },
     {
         id: 9,
@@ -61,6 +69,7 @@ export const locations =
         longitude: 67.04114039,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
         weight: 54,
+        color: true,
     },
     {
         id: 10,
@@ -68,6 +77,7 @@ export const locations =
         longitude: 67.04139399,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
         weight: 34,
+        color: false,
     },
     {
         id: 11,
@@ -75,4 +85,5 @@ export const locations =
         longitude: 67.04111009,
         markerImage: "https://i.ibb.co/2PwKJWc/UA-Studios-2.png",
         weight: 21,
+        color: true,
     }]
