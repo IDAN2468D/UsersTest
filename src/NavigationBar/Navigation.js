@@ -2,13 +2,12 @@ import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, BagScreen, OrderScreen, ChatScreen, ProfileScreen, DetailsScreen } from '../screens/index';
+import { HomeScreen, BagScreen, OrderScreen, ChatScreen, ProfileScreen, DetailsScreen, SvgMax, Welcome, Onboarding } from '../screens/index';
 import { LoginScreen, SplashScreen, RegisterScreen } from '../Authentication/index';
 import { AuthContext } from '../Context/AuthContext';
 import TabBarScreen from '../Components/TabBarScreen';
 import TabBarText from '../Components/TabBarText';
 import BegTab from '../Components/BegTab';
-import LogoTitle from '../Components/LogoTitle';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -26,18 +25,19 @@ const Navigation = () => {
                             name="Home"
                             component={MyTabs}
                             options={{
-                                headerShown: true,
+                                headerShown: false,
                                 headerShadowVisible: false,
                                 headerBackVisible: false,
-                                headerTitle: (props) => (<LogoTitle name="Category" {...props} />),
-                                headerStyle: {
-                                    backgroundColor: "#FFE500",
-                                }
                             }}
                         />
                         <Stack.Screen
                             name='DetailsScreen'
                             component={DetailsScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name='SvgMax'
+                            component={SvgMax}
                             options={{ headerShown: false }}
                         />
                     </>
@@ -49,6 +49,16 @@ const Navigation = () => {
                     />
                 ) : (
                     <>
+                        <Stack.Screen
+                            name="Welcome"
+                            component={Welcome}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen name='Onboarding'
+                            component={Onboarding}
+                            options={{ headerShown: false }}
+                        />
+
                         <Stack.Screen
                             name="Login"
                             component={LoginScreen}

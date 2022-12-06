@@ -7,18 +7,11 @@ const windowHeight = Dimensions.get('window').height;
 const ChatScreen = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
-    function tempFunction(params) {
-        return (
-            Alert.alert('onShow Called...')
-        )
-    }
-
     return (
         <View style={{ flex: 1 }}>
             <Modal
                 animationType="slide"
                 transparent={true}
-                onShow={tempFunction}
                 visible={modalVisible}
                 onRequestClose={() => {
                     setModalVisible(!modalVisible);

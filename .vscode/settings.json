@@ -12,9 +12,17 @@
         "filetext",
         "getch",
         "Kazam",
+        "Kufi",
+        "Moti",
+        "Nabla",
+        "Orenge",
         "Pressable",
         "rankby",
+        "Reem",
+        "Reenie",
         "Selectd",
+        "Taskstream",
         "wechat"
-    ]
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }

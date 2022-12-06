@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const LogoTitle = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.Text}>מבצעים וקופונים</Text>
+            <Text style={styles.Text}>Original Food</Text>
         </View>
     )
 }

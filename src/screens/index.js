@@ -3,7 +3,10 @@ import OrderScreen from './OrderScreen/OrderScreen';
 import BagScreen from './BagScreen/BagScreen';
 import ChatScreen from './ChatScreen/ChatScreen';
 import ProfileScreen from './ProfileScreen/ProfileScreen'
-import DetailsScreen from './DetailsScreen/Index';
+import DetailsScreen from './DetailsScreen/DetailsScreen';
+import SvgMax from './SvgMax/index';
+import Welcome from './Welcome/index';
+import Onboarding from './Onboarding/index'
 
 
 export {
@@ -12,5 +15,8 @@ export {
     BagScreen,
     ChatScreen,
     ProfileScreen,
-    DetailsScreen
+    DetailsScreen,
+    SvgMax,
+    Welcome,
+    Onboarding
 }

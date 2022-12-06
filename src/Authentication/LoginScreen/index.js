@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import Button from '../../Components/Button'
 import { AuthContext } from '../../Context/AuthContext';
+import { colors, fonts } from '../../StyleGuide';
+import LayoutScreen from '../LayoutScreen';
 
 const LoginScreen = ({ navigation }) => {
 
@@ -9,36 +12,54 @@ const LoginScreen = ({ navigation }) => {
     const { login, isLoading } = useContext(AuthContext);
 
     return (
-        <View style={styles.container}>
-            <View style={styles.ActivityIndicator}>
-                <ActivityIndicator animating={isLoading} size="large" />
-            </View>
-            <View style={styles.wrapper}>
-                <TextInput
-                    style={styles.input}
-                    value={email}
-                    placeholder='Enter email'
-                    onChangeText={(text) => setEmail(text)}
-                />
+        <LayoutScreen label="Welcome Back!" Sub_label="Please, Log In.">
+            <View style={styles.container}>
+                <View style={styles.ActivityIndicator}>
+                    <ActivityIndicator animating={isLoading} size="large" />
+                </View>
+                <View style={styles.wrapper}>
+                    <TextInput
+                        style={styles.input}
+                        value={email}
+                        placeholder='Enter email'
+                        onChangeText={(text) => setEmail(text)}
+                    />
 
-                <TextInput
-                    style={styles.input}
-                    value={password}
-                    placeholder='Enter password'
-                    secureTextEntry
-                    onChangeText={(text) => setPassword(text)}
-                />
+                    <TextInput
+                        style={styles.input}
+                        value={password}
+                        placeholder='Enter password'
+                        secureTextEntry
+                        onChangeText={(text) => setPassword(text)}
+                    />
 
-                <Button title='Login' onPress={() => login(email, password)} />
+                    <Button
+                        buttonText='Continue'
+                        onPress={() => login(email, password)}
+                        containerStyle={{
+                            flexDirection: "row",
+                            backgroundColor: "#78258B",
+                            paddingHorizontal: 30,
+                            paddingVertical: 20,
+                            borderRadius: 30,
+                        }}
+                        StyleText={{
+                            flex: 1,
+                            color: "white",
+                            fontSize: 16,
+                            fontWeight: 'bold',
+                        }}
+                    />
 
-                <View style={styles.TextInput}>
-                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                        <Text style={styles.link}>Register</Text>
-                    </TouchableOpacity>
-                    <Text>Don't have an account? </Text>
+                    <View style={styles.TextInput}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                            <Text style={styles.link}>Register</Text>
+                        </TouchableOpacity>
+                        <Text style={{ fontFamily: fonts.NablaRegularVariableFont, color: colors.Orenge }}>Don't have an account? </Text>
+                    </View>
                 </View>
             </View>
-        </View>
+        </LayoutScreen>
     )
 }
 
@@ -60,13 +81,14 @@ const styles = StyleSheet.create({
     },
     input: {
         marginBottom: 12,
-        borderWidth: 1,
-        borderColor: "#bbb",
-        borderRadius: 5,
-        paddingHorizontal: 14,
+        borderRadius: 30,
+        paddingHorizontal: 20,
+        paddingVertical: 22,
+        backgroundColor: "white",
     },
     link: {
         color: "blue",
+        fontWeight: "bold"
     },
     ActivityIndicator: {
         marginVertical: 20,
