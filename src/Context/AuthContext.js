@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false);
+    const [foods, setFoods] = useState([]);
 
     const register = (name, email, pass) => {
         setIsLoading(true);
@@ -90,8 +91,20 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const fetchPost = () => {
+        fetch(`${BASE_URL}/foods`)
+            .then((response) => response.json())
+            .then((response) => {
+                setFoods(response);
+            }).catch((error) => {
+                console.error(error);
+            })
+    }
+
+
     useEffect(() => {
         isLoggedIn()
+        fetchPost()
     }, []);
 
     return (
@@ -100,6 +113,7 @@ export const AuthProvider = ({ children }) => {
                 isLoading,
                 userInfo,
                 splashLoading,
+                foods,
                 register,
                 login,
                 logout

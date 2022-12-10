@@ -4,19 +4,19 @@ import Onboarding from 'react-native-onboarding-swiper';
 import { image } from '../../StyleGuide';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 function Dots({ selected }) {
     let backgroundColor;
 
-    backgroundColor = selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.3)';
+    backgroundColor = selected ? '#3D003E' : 'rgba(0, 0, 0, 0.3)';
 
     return (
         <View
             style={{
-                width: 6,
-                height: 6,
-                marginHorizontal: 3,
+                width: 12,
+                height: 12,
+                borderRadius: 30,
+                marginHorizontal: 6,
                 backgroundColor
             }}
         />
@@ -25,24 +25,24 @@ function Dots({ selected }) {
 
 function Skip({ ...props }) {
     return (
-        <TouchableOpacity style={{ marginHorizontal: 10, }} {...props}>
-            <Text style={{ fontSize: 16 }}>Skip</Text>
+        <TouchableOpacity style={{ marginHorizontal: 20 }} {...props}>
+            <Text style={{ fontSize: 16, color: "black" }}>Skip</Text>
         </TouchableOpacity>
     )
 }
 
 function Next({ ...props }) {
     return (
-        <TouchableOpacity style={{ marginHorizontal: 10, }} {...props}>
-            <Text style={{ fontSize: 16 }}>Next</Text>
+        <TouchableOpacity style={{ marginHorizontal: 20 }} {...props}>
+            <Text style={{ fontSize: 16, color: "black", fontWeight: 'bold' }}>Next</Text>
         </TouchableOpacity>
     )
 }
 
 function Done({ ...props }) {
     return (
-        <TouchableOpacity style={{ marginHorizontal: 10, }} {...props}>
-            <Text style={{ fontSize: 16 }}>Done</Text>
+        <TouchableOpacity style={{ marginHorizontal: 20 }} {...props}>
+            <Text style={{ fontSize: 16, color: "black", fontWeight: 'bold' }}>Done</Text>
         </TouchableOpacity>
     )
 }
@@ -50,7 +50,8 @@ function Done({ ...props }) {
 const onboarding = ({ navigation }) => {
     return (
         <Onboarding
-            style={styles.container}
+            bottomBarHeight={60}
+            bottomBarHighlight={false}
             SkipButtonComponent={Skip}
             NextButtonComponent={Next}
             DoneButtonComponent={Done}
@@ -60,21 +61,52 @@ const onboarding = ({ navigation }) => {
             pages={[
                 {
                     backgroundColor: "#fff",
-                    image: <Image source={image.ManLogo} resizeMode="contain" style={{ width: windowWidth }} />,
-                    title: 'Connect to the World',
-                    subtitle: 'A New with React Native Onboarding Swiper',
+                    image: <Image source={image.Locate} style={{ width: windowWidth, height: 400, }} />,
+                    title: 'Locate',
+                    subtitle: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.',
+                    titleStyles: {
+                        fontSize: 32,
+                        color: "#3D003E",
+                        fontWeight: 'bold',
+                    },
+                    subTitleStyles: {
+                        fontSize: 21,
+                        maxWidth: 290,
+                        color: "#3D003E",
+                    }
+
                 },
                 {
-                    backgroundColor: "red",
-                    image: <Image source={image.ManLogo} resizeMode="contain" style={{ width: windowWidth }} />,
-                    title: 'Share Your Favorites',
-                    subtitle: 'Share Your Thoughts With Similar Kind of People',
+                    backgroundColor: "#fff",
+                    image: <Image source={image.Unlock} style={{ width: windowWidth, height: 400, }} />,
+                    title: 'Unlock',
+                    subtitle: 'Sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    titleStyles: {
+                        fontSize: 32,
+                        color: "#3D003E",
+                        fontWeight: 'bold',
+                    },
+                    subTitleStyles: {
+                        fontSize: 21,
+                        maxWidth: 250,
+                        color: "#3D003E",
+                    },
                 },
                 {
-                    backgroundColor: "red",
-                    image: <Image source={image.ManLogo} resizeMode="contain" style={{ width: windowWidth }} />,
-                    title: 'Become The Star',
-                    subtitle: 'Let The Spot Light Capture You',
+                    backgroundColor: "#fff",
+                    image: <Image source={image.Ride} style={{ width: windowWidth, height: 400, }} />,
+                    title: 'Ride',
+                    subtitle: 'Culpa qui officia deserunt mollit anim id est laborum.',
+                    titleStyles: {
+                        fontSize: 32,
+                        color: "#3D003E",
+                        fontWeight: 'bold',
+                    },
+                    subTitleStyles: {
+                        fontSize: 21,
+                        maxWidth: 270,
+                        color: "#3D003E",
+                    }
                 }
             ]}
 
@@ -84,10 +116,4 @@ const onboarding = ({ navigation }) => {
 
 export default onboarding
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
+const styles = StyleSheet.create({})

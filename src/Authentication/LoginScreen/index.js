@@ -1,63 +1,94 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native';
-import Button from '../../Components/Button'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator, ScrollView } from 'react-native';
+import Button from '../../Components/Button';
+import { utils } from '../../utils';
 import { AuthContext } from '../../Context/AuthContext';
 import { colors, fonts } from '../../StyleGuide';
 import LayoutScreen from '../LayoutScreen';
+import FormInput from '../../Components/FormInput'
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation, errorMsg = "" }) => {
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
+    const [emailError, setEmailError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+    const [showPss, setShowPss] = useState(false)
     const { login, isLoading } = useContext(AuthContext);
 
+    function isEnableSignInEmail() {
+        return email != "" && emailError == "" && password != "" && passwordError == ""
+    }
+
     return (
-        <LayoutScreen label="Welcome Back!" Sub_label="Please, Log In.">
+        <LayoutScreen label="Log In to your Account.">
             <View style={styles.container}>
-                <View style={styles.ActivityIndicator}>
+                <View style={{ marginHorizontal: 15 }}>
+                    <Text style={{ fontSize: 12 }}>Email OR UserName</Text>
                     <ActivityIndicator animating={isLoading} size="large" />
                 </View>
-                <View style={styles.wrapper}>
-                    <TextInput
-                        style={styles.input}
-                        value={email}
-                        placeholder='Enter email'
-                        onChangeText={(text) => setEmail(text)}
-                    />
+                <FormInput
+                    value={email}
+                    errorMsg={emailError}
+                    placeholder='Enter email'
+                    onChangeText={(text) => setEmail(text)}
+                    onChange={(value) => {
+                        utils.validateEmail(value, setEmailError)
+                        setEmail(value)
+                    }}
+                    inputStyle={{
+                        borderWidth: 1,
+                        borderColor: "black",
+                        borderRadius: 20,
+                        paddingHorizontal: 20
+                    }}
 
-                    <TextInput
-                        style={styles.input}
-                        value={password}
-                        placeholder='Enter password'
-                        secureTextEntry
-                        onChangeText={(text) => setPassword(text)}
-                    />
-
-                    <Button
-                        buttonText='Continue'
-                        onPress={() => login(email, password)}
-                        containerStyle={{
-                            flexDirection: "row",
-                            backgroundColor: "#78258B",
-                            paddingHorizontal: 30,
-                            paddingVertical: 20,
-                            borderRadius: 30,
-                        }}
-                        StyleText={{
-                            flex: 1,
-                            color: "white",
-                            fontSize: 16,
-                            fontWeight: 'bold',
-                        }}
-                    />
-
-                    <View style={styles.TextInput}>
-                        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                            <Text style={styles.link}>Register</Text>
-                        </TouchableOpacity>
-                        <Text style={{ fontFamily: fonts.NablaRegularVariableFont, color: colors.Orenge }}>Don't have an account? </Text>
-                    </View>
+                />
+                <View style={{ marginHorizontal: 15 }}>
+                    <Text style={{ fontSize: 12 }}>Password</Text>
                 </View>
+                <FormInput
+                    value={password}
+                    placeholder='Enter password'
+                    secureTextEntry={!showPss}
+                    errorMsg={passwordError}
+                    onChangeText={(text) => setPassword(text)}
+                    onChange={(value) => {
+                        utils.validatePassword(value, setPasswordError)
+                        setPassword(value)
+                    }}
+                    inputStyle={{
+                        borderWidth: 1,
+                        borderColor: "black",
+                        borderRadius: 20,
+                        paddingHorizontal: 20
+                    }}
+                />
+                <View style={styles.TextInput}>
+                    <TouchableOpacity onPress={() => console.log("Recover_Password?")}>
+                        <Text style={{ fontFamily: fonts.ReenieBeanieRegular, color: colors.Blue }}>
+                            Recover Password?
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <Button
+                    buttonText='Login'
+                    onPress={() => login(email, password)}
+                    disabled={isEnableSignInEmail() ? false : true}
+                    containerStyle={{
+                        flexDirection: "row",
+                        paddingHorizontal: 40,
+                        paddingVertical: 20,
+                        borderRadius: 20,
+                        backgroundColor: isEnableSignInEmail() ? colors.Blue : colors.GuidePink,
+                    }}
+                    StyleText={{
+                        color: "white",
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        marginHorizontal: 75,
+                    }}
+                />
             </View>
         </LayoutScreen>
     )
@@ -68,30 +99,16 @@ export default LoginScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        marginHorizontal: 36,
     },
     TextInput: {
         flexDirection: 'row',
-        justifyContent: "flex-end",
-        marginTop: 20,
-    },
-    wrapper: {
-        width: "80%",
-    },
-    input: {
-        marginBottom: 12,
-        borderRadius: 30,
-        paddingHorizontal: 20,
-        paddingVertical: 22,
-        backgroundColor: "white",
+        justifyContent: "flex-start",
+        marginHorizontal: 10,
+        marginVertical: 10,
     },
     link: {
         color: "blue",
         fontWeight: "bold"
-    },
-    ActivityIndicator: {
-        marginVertical: 20,
-        justifyContent: "center",
-    },
+    }
 })

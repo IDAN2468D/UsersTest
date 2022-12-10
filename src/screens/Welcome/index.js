@@ -4,45 +4,43 @@ import {
     Text,
     SafeAreaView,
     TouchableWithoutFeedback,
-    useWindowDimensions
+
+    Dimensions
 } from 'react-native';
 import images from '../../StyleGuide/Image';
-import { MotiView, MotiImage } from 'moti';
+import { MotiView, MotiImage, View } from 'moti';
+import LinearGradient from 'react-native-linear-gradient';
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 
 const Welcome = ({ navigation }) => {
-    const { width } = useWindowDimensions();
+
     return (
         <SafeAreaView style={styles.container}>
+            <LinearGradient start={{ x: 5, y: 1 }} end={{ x: 5, y: 0 }} colors={['#00F5FF', '#0EFF79']} style={styles.linearGradient} />
             <MotiImage
-                source={images.icBike}
-                style={{ width: width * 0.8, height: width * 0.8 }}
+                source={images.Shape}
+                resizeMode="contain"
+                style={{ width: windowWidth * 0.5, height: windowHeight * 0.5 }}
                 from={{ opacity: 0, translateY: 50, scale: 0 }}
                 animate={{ opacity: 1, translateY: 0, scale: 1 }}
-                transition={{ delay: 100, type: "timing" }}
-            />
-            <MotiView
-                from={{ opacity: 0, translateY: 50 }}
-                animate={{ opacity: 1, translateY: 0 }}
                 transition={{ delay: 200, type: "timing" }}
-            >
-                <Text style={styles.title}>Taskstream-TK20</Text>
-                <Text style={styles.text}>
-                    In 2017, LiveText joined forces with Taskstream-Tk20.
-                    The Companies are now united under a new name: Watermark.
-                    Learn about Watermark's mission to empower educators and students
-                    with better data for learning.
-                </Text>
-            </MotiView>
+            />
             <TouchableWithoutFeedback onPress={() => navigation.navigate("SvgMax")}>
                 <MotiView
                     from={{ opacity: 0, translateY: 50 }}
                     animate={{ opacity: 1, translateY: 0 }}
                     transition={{ delay: 300, type: "timing" }}
-                    style={[styles.button, { width: width * 0.8 }]}>
+                    style={[styles.button, { width: windowWidth * 0.8 }]}>
                     <Text onPress={() => navigation.navigate("Onboarding")} style={styles.textButton}>Get Started</Text>
                 </MotiView>
             </TouchableWithoutFeedback>
+            <View style={{ flexDirection: 'row', marginTop: 20, }}>
+                <Text onPress={() => navigation.navigate("Login")}>Login</Text>
+                <Text style={{ fontSize: 14 }}>Already have an account? </Text>
+            </View>
         </SafeAreaView>
     )
 }
@@ -52,9 +50,8 @@ export default Welcome
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "space-around",
+        justifyContent: "center",
         alignItems: 'center',
-        backgroundColor: "#F8E9B0",
     },
     title: {
         textAlign: "center",
@@ -70,15 +67,19 @@ const styles = StyleSheet.create({
         lineHeight: 20
     },
     button: {
-        backgroundColor: "#FEC520",
+        backgroundColor: "#FEFF",
         padding: 20,
-        borderRadius: 15,
-        justifyContent: 'center',
+        borderRadius: 30,
         alignItems: 'center',
     },
     textButton: {
         fontSize: 16,
         fontWeight: '600',
         color: "black"
+    },
+    linearGradient: {
+        position: "absolute",
+        width: windowWidth,
+        height: windowHeight,
     }
 })

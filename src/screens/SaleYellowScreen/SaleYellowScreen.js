@@ -1,26 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import Categoris from '../../Components/Categoris';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../Context/AuthContext';
 
 
 const SaleYellowScreen = () => {
 
-    const [foods, setFoods] = useState([]);
+    const { foods } = useContext(AuthContext);
     const navigation = useNavigation();
-    useEffect(() => {
-        fetchPost()
-    }, [])
-    const fetchPost = () => {
-        const apiUrl = "https://app-progect-1.herokuapp.com/foods"
-        fetch(apiUrl)
-            .then((response) => response.json())
-            .then((response) => {
-                setFoods(response);
-            }).catch((error) => {
-                console.error(error);
-            })
-    }
 
     return (
         <View style={styles.container}>

@@ -10,8 +10,12 @@ const Image_2 = require("../assets/images/image_2.jpg");
 const image_3 = require("../assets/images/image_3.jpg");
 const Image_4 = require("../assets/images/image_4.jpg");
 const image_5 = require("../assets/images/image_5.jpg");
-
-
+const Shape = require("../assets/images/Shape.png");
+const Unlock = require("../assets/images/Unlock.png");
+const Ride = require("../assets/images/Ride.png");
+const Locate = require("../assets/images/Locate.png");
+const OZ = require("../assets/images/OZ.png");
+const Logo_161 = require("../assets/images/Logo_161.png");
 
 
 
@@ -27,5 +31,11 @@ export default {
     Image_2,
     image_3,
     Image_4,
-    image_5
+    image_5,
+    Shape,
+    Unlock,
+    Ride,
+    Locate,
+    OZ,
+    Logo_161
 }
