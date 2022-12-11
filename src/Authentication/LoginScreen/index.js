@@ -5,9 +5,10 @@ import { utils } from '../../utils';
 import { AuthContext } from '../../Context/AuthContext';
 import { colors, fonts } from '../../StyleGuide';
 import LayoutScreen from '../LayoutScreen';
-import FormInput from '../../Components/FormInput'
+import FormInput from '../../Components/FormInput';
+import Icon from 'react-native-vector-icons/Feather'
 
-const LoginScreen = ({ navigation, errorMsg = "" }) => {
+const LoginScreen = () => {
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -23,10 +24,6 @@ const LoginScreen = ({ navigation, errorMsg = "" }) => {
     return (
         <LayoutScreen label="Log In to your Account.">
             <View style={styles.container}>
-                <View style={{ marginHorizontal: 15 }}>
-                    <Text style={{ fontSize: 12 }}>Email OR UserName</Text>
-                    <ActivityIndicator animating={isLoading} size="large" />
-                </View>
                 <FormInput
                     value={email}
                     errorMsg={emailError}
@@ -37,16 +34,13 @@ const LoginScreen = ({ navigation, errorMsg = "" }) => {
                         setEmail(value)
                     }}
                     inputStyle={{
-                        borderWidth: 1,
-                        borderColor: "black",
-                        borderRadius: 20,
-                        paddingHorizontal: 20
+                        fontWeight: 'bold',
+                        textDecorationLine: "none"
                     }}
-
+                    appendComponent={
+                        <Text style={{ fontSize: 14 }}>Email OR UserName</Text>
+                    }
                 />
-                <View style={{ marginHorizontal: 15 }}>
-                    <Text style={{ fontSize: 12 }}>Password</Text>
-                </View>
                 <FormInput
                     value={password}
                     placeholder='Enter password'
@@ -58,11 +52,26 @@ const LoginScreen = ({ navigation, errorMsg = "" }) => {
                         setPassword(value)
                     }}
                     inputStyle={{
-                        borderWidth: 1,
-                        borderColor: "black",
-                        borderRadius: 20,
-                        paddingHorizontal: 20
+                        fontWeight: 'bold',
+                        textDecorationLine: "none"
                     }}
+                    appendComponent={
+
+                        <Text style={{ fontSize: 14 }}>Password</Text>
+
+                    }
+                    prependComponent={
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                alignItems: 'center',
+                            }}
+                        >
+                            <TouchableOpacity onPress={() => setShowPss(!showPss)} style={{ justifyContent: 'center', }}>
+                                <Icon name={showPss === false ? "eye-off" : "eye"} size={26} color={colors.Blue} />
+                            </TouchableOpacity>
+                        </View>
+                    }
                 />
                 <View style={styles.TextInput}>
                     <TouchableOpacity onPress={() => console.log("Recover_Password?")}>
@@ -89,6 +98,9 @@ const LoginScreen = ({ navigation, errorMsg = "" }) => {
                         marginHorizontal: 75,
                     }}
                 />
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <ActivityIndicator animating={isLoading} size="large" />
+                </View>
             </View>
         </LayoutScreen>
     )

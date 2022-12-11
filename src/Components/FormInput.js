@@ -18,6 +18,7 @@ const FormInput = ({
         <>
             <View style={styles.ErorrText}>
                 <Text style={styles.Text}>{errorMsg}</Text>
+                {appendComponent}
             </View>
             <View style={styles.TextInput}>
                 {prependComponent}
@@ -34,7 +35,6 @@ const FormInput = ({
                     autoCapitalize={autoCapitalize}
                     onChangeText={(text) => onChange(text)}
                 />
-                {appendComponent}
             </View>
         </>
     )
@@ -45,8 +45,9 @@ export default FormInput
 const styles = StyleSheet.create({
     ErorrText: {
         flexDirection: 'row',
-        justifyContent: "flex-start",
-        marginHorizontal: 20,
+        justifyContent: "space-between",
+        marginVertical: 10,
+        marginHorizontal: 10,
     },
     Text: {
         fontSize: 12,
@@ -55,11 +56,13 @@ const styles = StyleSheet.create({
     },
     TextInput: {
         flexDirection: "row",
-        paddingHorizontal: 10,
         paddingVertical: 5,
         marginTop: 5,
-        borderRadius: 20,
         opacity: 0.4,
         backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: "black",
+        borderRadius: 20,
+        paddingHorizontal: 20
     }
 })

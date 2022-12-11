@@ -8,6 +8,8 @@ import { AuthContext } from '../Context/AuthContext';
 import TabBarScreen from '../Components/TabBarScreen';
 import TabBarText from '../Components/TabBarText';
 import BegTab from '../Components/BegTab';
+import DetailsScreen_2 from '../screens/DetailsScreen_2';
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -29,6 +31,11 @@ const Navigation = () => {
                                 headerShadowVisible: false,
                                 headerBackVisible: false,
                             }}
+                        />
+                        <Stack.Screen
+                            name='DetailsScreen_2'
+                            component={DetailsScreen_2}
+                            options={{ headerShown: false }}
                         />
                         <Stack.Screen
                             name='DetailsScreen'

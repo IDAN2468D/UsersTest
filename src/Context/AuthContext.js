@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false);
     const [foods, setFoods] = useState([]);
+    const [applictionPost, setApplictionPost] = useState([]);
 
     const register = (name, email, pass) => {
         setIsLoading(true);
@@ -101,10 +102,21 @@ export const AuthProvider = ({ children }) => {
             })
     }
 
+    const ApplictionPost = () => {
+        fetch(`${BASE_URL}/appliances`)
+            .then((response) => response.json())
+            .then((response) => {
+                setApplictionPost(response);
+            }).catch((error) => {
+                console.log(error)
+            })
+    }
+
 
     useEffect(() => {
         isLoggedIn()
         fetchPost()
+        ApplictionPost()
     }, []);
 
     return (
@@ -114,6 +126,7 @@ export const AuthProvider = ({ children }) => {
                 userInfo,
                 splashLoading,
                 foods,
+                applictionPost,
                 register,
                 login,
                 logout

@@ -21,17 +21,6 @@ const LayoutScreen = ({ label, children }) => {
                         <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "center", color: "#011947", fontFamily: fonts.ReenieBeanieRegular, }}>{label}</Text>
                     </View>
                     {children}
-                    <View style={{ flexDirection: "row", justifyContent: "space-evenly", marginVertical: 20, marginHorizontal: 50, }}>
-                        <View style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: "grey", justifyContent: 'center', alignItems: "center" }}>
-                            <AntDesign name='apple1' size={20} color="white" />
-                        </View>
-                        <View style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: "grey", justifyContent: 'center', alignItems: "center" }}>
-                            <AntDesign name='facebook-square' size={20} color="white" />
-                        </View>
-                        <View style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: "grey", justifyContent: 'center', alignItems: "center" }}>
-                            <AntDesign name='google' size={20} color="white" />
-                        </View>
-                    </View>
                     <View style={{
                         width: windowWidth,
                         height: 150,

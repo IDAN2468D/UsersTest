@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { DotIndicator } from 'react-native-indicators';
 
 const SplashScreen = () => {
     return (
-        <View style={styles.container}>
-            <ActivityIndicator size="large" color="#ffffff" />
-        </View>
+
+        <DotIndicator style={styles.container} animating={true} hidesWhenStopped={false} />
+
     )
 }
 
