@@ -8,7 +8,7 @@ import LayoutScreen from '../LayoutScreen';
 import FormInput from '../../Components/FormInput';
 import Icon from 'react-native-vector-icons/Feather'
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -22,7 +22,7 @@ const LoginScreen = () => {
     }
 
     return (
-        <LayoutScreen label="Log In to your Account.">
+        <LayoutScreen label="Log In to your Account." SwipeUp="Swipe Up" onPress={() => navigation.navigate("Register")}>
             <View style={styles.container}>
                 <FormInput
                     value={email}
@@ -56,9 +56,7 @@ const LoginScreen = () => {
                         textDecorationLine: "none"
                     }}
                     appendComponent={
-
                         <Text style={{ fontSize: 14 }}>Password</Text>
-
                     }
                     prependComponent={
                         <View
@@ -119,8 +117,4 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginVertical: 10,
     },
-    link: {
-        color: "blue",
-        fontWeight: "bold"
-    }
 })

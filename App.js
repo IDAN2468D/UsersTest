@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StatusBar } from 'react-native';
 import Navigation from './src/NavigationBar/Navigation';
 import { AuthProvider } from './src/Context/AuthContext';

@@ -10,7 +10,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 
 const windowWidth = Dimensions.get('window').width;
 
-const LayoutScreen = ({ label, children }) => {
+const LayoutScreen = ({ label, children, SwipeUp, onPress }) => {
     const navigation = useNavigation();
     return (
         <KeyboardAwareScrollView contentContainerStyle={{ backgroundColor: "#00B3FE" }}>
@@ -34,8 +34,8 @@ const LayoutScreen = ({ label, children }) => {
                             <Icon name='chevron-up' size={30} color="black" style={{ width: 30, height: 30, borderRadius: 30, backgroundColor: "white" }} />
                         </View>
                         <View style={{ flexDirection: 'row' }}>
-                            <TouchableNativeFeedback onPress={() => navigation.navigate("Register")}>
-                                <Text style={{ color: "white", fontSize: 14, fontWeight: 'bold' }}>Swipe Up</Text>
+                            <TouchableNativeFeedback onPress={onPress}>
+                                <Text style={{ color: "white", fontSize: 14, fontWeight: 'bold' }}>{SwipeUp}</Text>
                             </TouchableNativeFeedback>
                             <Text style={{ color: "white", fontSize: 14, marginHorizontal: 5 }}>New User?</Text>
                         </View>
