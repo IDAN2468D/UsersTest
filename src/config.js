@@ -1,1 +1,1 @@
-export const BASE_URL = "http://192.168.1.157:3000"
+export const BASE_URL = "https://calm-pear-swordfish-kit.cyclic.app"

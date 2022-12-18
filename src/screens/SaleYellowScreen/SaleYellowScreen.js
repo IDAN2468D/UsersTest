@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Categoris from '../../Components/Categoris';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../Context/AuthContext';
@@ -14,7 +14,6 @@ const SaleYellowScreen = () => {
         <View style={styles.container}>
             <FlatList
                 data={foods}
-                numColumns={2}
                 keyExtractor={item => item._id}
                 showsHorizontalScrollIndicator={false}
                 keyboardDismissMode="on-drag"

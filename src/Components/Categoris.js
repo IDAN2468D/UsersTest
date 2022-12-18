@@ -5,8 +5,8 @@ const Categoris = ({ item, onPress }) => {
     return (
         <TouchableNativeFeedback style={styles.container} onPress={onPress}>
             <View style={styles.View}>
-                <Image source={{ uri: item.img }} resizeMode="cover" style={styles.image} />
-                <Text>{item.name}</Text>
+                <Image source={{ uri: item.img }} resizeMode="contain" style={styles.image} />
+                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{item.name}</Text>
             </View>
         </TouchableNativeFeedback>
     )
@@ -26,6 +26,12 @@ const styles = StyleSheet.create({
     },
     View: {
         marginHorizontal: 10,
-        marginVertical: 10,
+        marginVertical: 20,
+        alignItems: 'center',
+        borderBottomColor: "black",
+        borderBottomWidth: 2,
+        borderBottomColor: "black",
+        borderBottomWidth: 2,
+
     }
 })

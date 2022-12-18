@@ -47,7 +47,7 @@ function Done({ ...props }) {
     )
 }
 
-const onboarding = ({ navigation }) => {
+const Onboarding_1 = ({ navigation }) => {
     return (
         <Onboarding
             bottomBarHeight={60}
@@ -114,6 +114,6 @@ const onboarding = ({ navigation }) => {
     )
 }
 
-export default onboarding
+export default Onboarding_1
 
 const styles = StyleSheet.create({})

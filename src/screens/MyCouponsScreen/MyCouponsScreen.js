@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../../Context/AuthContext';
 import { useNavigation } from '@react-navigation/native'
-import Categoris from '../../Components/Categoris';
+import { fonts } from '../../StyleGuide/index';
 
 
 const windowWidth = Dimensions.get("window").width;
@@ -23,6 +23,7 @@ const MyCouponsScreen = () => {
                         <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen_2", { itemId: item })}>
                             <View item={index}>
                                 <Image source={{ uri: item.image }} resizeMode="cover" style={{ width: windowWidth, height: 400, }} />
+                                <Text style={{ fontSize: 50, fontFamily: fonts.BungeeSpiceRegular }}>{item.description}</Text>
                             </View>
                         </TouchableOpacity>
                     )

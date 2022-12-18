@@ -96,7 +96,7 @@ const RegisterScreen = ({ navigation }) => {
                 />
                 <Button
                     buttonText='SingUp'
-                    onPress={() => register(email, pass, name)}
+                    onPress={() => register(name, email, pass)}
                     disabled={isEnableSignInEmail() ? false : true}
                     containerStyle={{
                         flexDirection: "row",

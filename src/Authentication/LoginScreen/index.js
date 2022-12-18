@@ -84,7 +84,7 @@ const LoginScreen = ({ navigation }) => {
                     disabled={isEnableSignInEmail() ? false : true}
                     containerStyle={{
                         flexDirection: "row",
-                        paddingHorizontal: 40,
+                        justifyContent: 'center',
                         paddingVertical: 20,
                         borderRadius: 20,
                         backgroundColor: isEnableSignInEmail() ? colors.Blue : colors.GuidePink,
@@ -93,7 +93,6 @@ const LoginScreen = ({ navigation }) => {
                         color: "white",
                         fontSize: 16,
                         fontWeight: 'bold',
-                        marginHorizontal: 75,
                     }}
                 />
                 <View style={{ flex: 1, justifyContent: 'center' }}>
