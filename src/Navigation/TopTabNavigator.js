@@ -9,8 +9,9 @@ function MyTabs() {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle: {
-                },
+                tabBarIndicatorStyle: { backgroundColor: "red" },
+                tabBarLabelStyle: { fontSize: 12, backgroundColor: "white", paddingHorizontal: 30, paddingVertical: 10, borderRadius: 30, },
+                tabBarStyle: { backgroundColor: "green" },
             }}
         >
             <Tab.Screen name="Home" component={SaleYellowScreen} />

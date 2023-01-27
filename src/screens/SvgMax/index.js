@@ -7,7 +7,7 @@ import { Easing } from 'react-native-reanimated';
 const _color = "#6e01ef"
 const _sizes = 100
 
-const index = () => {
+const SvgMax = () => {
     const [visible, toggle] = useReducer((s) => !s, true)
     return (
         <View style={styles.container}>
@@ -36,7 +36,7 @@ const index = () => {
     )
 }
 
-export default index
+export default SvgMax
 
 const styles = StyleSheet.create({
     container: {

@@ -128,8 +128,9 @@ const BagScreen = () => {
                         <MyCustomMarkerView {...region} />
                     </Callout>
                 </Marker>
-                {locations.map(marker => (
+                {locations.map((marker, index) => (
                     <Marker
+                        key={index}
                         coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
                         title={marker.title}
                     >

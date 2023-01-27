@@ -40,8 +40,9 @@ export default function App() {
                     coordinate={destination}
                     onDragEnd={(direction) => setDestination(direction.nativeEvent.coordinate)}
                 />
-                {locations.map(marker => (
+                {locations.map((marker, index) => (
                     <Marker
+                        key={index}
                         coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
                         title={marker.title}
                     >

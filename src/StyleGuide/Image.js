@@ -37,5 +37,5 @@ export default {
     Ride,
     Locate,
     OZ,
-    Logo_161
+    Logo_161,
 }

@@ -1,40 +1,63 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Modal, Pressable, Dimensions, Alert } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { FlatList, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { colors, fonts } from '../../StyleGuide';
+import { AuthContext } from '../../Context/AuthContext';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Foods from '../../Components/Foods';
 
-const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get('window').height;
 
 const ChatScreen = () => {
-    const [modalVisible, setModalVisible] = useState(false);
+    const [filterData, setApplictionPost] = useState([]);
+    const [masterData, setMasterData] = useState([]);
+    const { applictionPost } = useContext(AuthContext);
+    const [search, setSearch] = useState("")
+
+
+    const serchFilter = (text) => {
+        if (text) {
+            const filterData = masterData.filter((item) => {
+                const itemData = item.name ? item.name.toUpperCase() : "".toUpperCase();
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+            });
+            setApplictionPost(filterData);
+            setSearch(text);
+        } else {
+            setApplictionPost(masterData);
+            setSearch(text);
+        }
+    }
+
+    const ItemView = ({ item }) => {
+        return (
+            <Foods
+                item={item}
+                onPress={() => navigation.navigate("DetailsScreen", { itemId: item })}
+            />
+        )
+    }
+
 
     return (
-        <View style={{ flex: 1 }}>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Hello World!</Text>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <Text style={styles.textStyle}>Hide Modal</Text>
-                        </Pressable>
-                    </View>
+        <View style={{ flex: 1, }}>
+            <View style={styles.container}>
+                <View style={styles.wrapperSearch}>
+                    <Icon color={colors.Search} name="search" size={20} style={{ paddingVertical: 10, paddingHorizontal: 5, }} />
+                    <TextInput
+                        style={{ ...fonts.BungeeSpiceRegular }}
+                        placeholder="Happy Bones"
+                        placeholderTextColor={{ ...colors.Blue }}
+                        underlineColorAndroid="transparent"
+                        onChangeText={(text) => serchFilter(text)}
+                    />
                 </View>
-            </Modal>
-            <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}
-            >
-                <Text style={styles.textStyle}>Show Modal</Text>
-            </Pressable>
+                <FlatList
+                    data={applictionPost}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={2}
+                    renderItem={ItemView}
+                />
+            </View>
         </View>
     )
 }
@@ -42,45 +65,22 @@ const ChatScreen = () => {
 export default ChatScreen
 
 const styles = StyleSheet.create({
-    centeredView: {
-        position: "absolute",
+    container: {
         flex: 1,
-        width: windowWidth,
-        bottom: 130,
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: "flex"
     },
-    modalView: {
-        backgroundColor: "white",
-        borderRadius: 10,
-        paddingHorizontal: 20,
-        paddingVertical: 80,
-        //alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
+    wrapperSearch: {
+        height: 60,
+        marginHorizontal: 20,
+        marginVertical: 20,
+        backgroundColor: colors.lightGrey_2,
+        borderRadius: 12,
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        paddingHorizontal: 25,
+        paddingVertical: 10,
     },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 8
-    },
-    buttonOpen: {
-        backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center"
-    }
 })
